@@ -1,0 +1,173 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- Project Information -->
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <version>${version}</version>
+    <packaging>jar</packaging>
+    <!-- Properties -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <app.encoding>UTF-8</app.encoding>
+        <app.java.source.version>1.7</app.java.source.version>
+        <app.java.target.version>1.7</app.java.target.version>
+        <app.report.locales>en</app.report.locales>
+        <app.scm.url>SVN or GIT URL</app.scm.url>
+        <app.jira.url>Jira URL</app.jira.url>
+        <app.ci.url>Jenkins URL</app.ci.url>
+    </properties>
+    <!-- Organization -->
+    <organization>
+        <name>Your Company</name>
+    </organization>
+    <!-- Mailing Lists -->
+    <mailingLists>
+        <mailingList>
+            <name>Your Mailling list name</name>
+            <subscribe>Mailling list address</subscribe>
+        </mailingList>
+    </mailingLists>
+    <!-- Developers -->
+    <developers>
+        <developer>
+            <name>Your Name</name>
+            <id>Your ID</id>
+            <organization>Your Team name</organization>
+            <roles>
+                <role>Your role</role>
+            </roles>
+        </developer>
+    </developers>
+    <!-- SVN URL -->
+    <scm><url>${app.scm.url}</url></scm>
+    <!-- JIRA -->
+    <issueManagement>
+        <url>${app.jira.url}</url>
+    </issueManagement>
+    <!-- CI -->
+    <ciManagement>
+        <url>${app.ci.url}</url>
+    </ciManagement>
+    <!-- Licenses -->
+    <licenses>
+        <license>
+            <name>Copyright (c) Your Company, Inc. All Rights Reserved.</name>
+        </license>
+    </licenses>
+    <build>
+        <finalName>${artifactId}</finalName>
+        <plugins>
+            <!-- Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.3.2</version>
+                <configuration>
+                    <source>${app.java.source.version}</source>
+                    <target>${app.java.target.version}</target>
+                    <encoding>${app.encoding}</encoding>
+                </configuration>
+            </plugin>
+            <!-- jar-with-dependencies -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-jar-with-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Source -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- Site -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <encoding>utf-8</encoding>
+                    <locales>${app.report.locales}</locales>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <!-- Project Report -->
+    <reporting>
+        <outputDirectory>target/site</outputDirectory>
+        <plugins>
+            <!-- Javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.6.1</version>
+                <configuration>
+                    <outputEncoding>utf-8</outputEncoding>
+                    <docencoding>utf-8</docencoding>
+                    <charset>utf-8</charset>
+                    <encoding>utf-8</encoding>
+                    <locale>en_US</locale>
+                </configuration>
+            </plugin>
+            <!-- Findbugs -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>2.4.0</version>
+                <configuration>
+                    <xmlOutput>true</xmlOutput>
+                </configuration>
+            </plugin>
+            <!-- Checkstyle -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <configuration>
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+            <!-- Codecoverage -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.5.1</version>
+                <configuration>
+                    <formats>
+                        <format>html</format>
+                        <format>xml</format>
+                    </formats>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>
