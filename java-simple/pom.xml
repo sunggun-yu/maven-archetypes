@@ -1,38 +1,75 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>universtation.maven.archetypes</groupId>
+    <groupId>me.sunggun.maven.archetypes</groupId>
     <artifactId>java-simple</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
     <name>maven-archetype-java-simple</name>
-    <url>https://github.com/sunggun-yu/maven-archetypes/java-simple</url>
+    <url>https://github.com/sunggun-yu/maven-archetypes/wiki</url>
+    <!-- Properties -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <app.encoding>UTF-8</app.encoding>
+        <app.java.source.version>1.7</app.java.source.version>
+        <app.java.target.version>1.7</app.java.target.version>
+        <app.report.locales>en</app.report.locales>
+        <app.scm.url>https://github.com/sunggun-yu/maven-archetypes.git</app.scm.url>
+        <app.issues.url>https://github.com/sunggun-yu/maven-archetypes/issues</app.issues.url>
+        <app.ci.url>https://sunggun.ci.cloudbees.com/</app.ci.url>
+    </properties>
+    <!-- Organization -->
+    <organization>
+        <name>Sunggun.me</name>
+    </organization>
+    <!-- Licenses -->
     <licenses>
         <license>
             <name>Apache License 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0</url>
         </license>
     </licenses>
-    <scm>
-        <url>https://github.com/sunggun-yu/maven-archetypes</url>
-        <connection>scm:git:git://github.com/sunggun-yu/maven-archetypes.git</connection>
-        <developerConnection>scm:git:git://github.com/sunggun-yu/maven-archetypes.git</developerConnection>
-    </scm>
+    <!-- Developers -->
     <developers>
         <developer>
-            <id>sunggun-yu</id>
             <name>Sunggun Yu</name>
-            <email>sunggun.yu@gmail.com</email>
-            <url>https://github.com/sunggun-yu/</url>
+            <id>sunggun.yu</id>
+            <organization>Sunggun.me</organization>
             <roles>
-                <role>lead</role>
-                <role>architect</role>
-                <role>developer</role>
+                <role>Architect</role>
+                <role>Developer</role>
             </roles>
-            <timezone>-9</timezone>
         </developer>
     </developers>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <!-- SCM URL -->
+    <scm>
+        <url>${app.scm.url}</url>
+    </scm>
+    <!-- Issue Management URL -->
+    <issueManagement>
+        <system>Github Issues</system>
+        <url>${app.issues.url}</url>
+    </issueManagement>
+    <!-- CI Server -->
+    <ciManagement>
+        <system>Jenkins</system>
+        <url>${app.ci.url}</url>
+    </ciManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>2.2</version>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>update-local-catalog</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

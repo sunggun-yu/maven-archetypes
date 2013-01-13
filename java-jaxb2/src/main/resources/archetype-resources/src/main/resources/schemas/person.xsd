@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://sunggun.me/samples/helloWorld/"
+    targetNamespace="http://sunggun.me/samples/helloWorld/">
+    <element name="Person">
+        <complexType>
+            <sequence>
+                <element name="name" type="string"></element>
+                <element name="age" type="int"></element>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

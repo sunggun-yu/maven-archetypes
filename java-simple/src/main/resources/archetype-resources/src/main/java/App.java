@@ -1,8 +1,8 @@
-package $package;
+package ${package};
 
 /**
- * Hello World!
- * 
+ * @author $Author$
+ * @version $Rev$
  */
 public class App {
     public static void main(String[] args) {

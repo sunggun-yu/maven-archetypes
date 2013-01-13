@@ -10,5 +10,9 @@
 .settings
 .project
 
+# Intellij IDEA Files #
+.idea
+*.iml
+
 # Maven Target #
 target
